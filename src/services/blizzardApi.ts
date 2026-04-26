@@ -24,3 +24,14 @@ export async function fetchMedia(itemIds: number[]): Promise<Record<number, stri
   if (!res.ok) throw new Error(`Media fetch failed: ${res.status}`)
   return res.json()
 }
+
+export interface TokenPriceResult {
+  price: number
+  lastUpdated: number
+}
+
+export async function fetchTokenPrice(): Promise<TokenPriceResult> {
+  const res = await fetch(`${BASE}/token?region=${region()}`)
+  if (!res.ok) throw new Error(`Token price fetch failed: ${res.status}`)
+  return res.json()
+}

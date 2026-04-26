@@ -43,9 +43,6 @@ function formatAhTime(lastModified: string): string {
           </span>
         </div>
       </div>
-      <button class="btn-refresh" @click="store.loadMarketData()" :disabled="store.isLoading">
-        {{ store.isLoading ? 'Loading…' : '↻ Refresh Prices' }}
-      </button>
     </div>
 
     <div v-if="store.error" class="error-banner">{{ store.error }}</div>
@@ -236,7 +233,7 @@ function formatAhTime(lastModified: string): string {
 .calculator { display: flex; flex-direction: column; gap: 1.25rem; }
 
 .calc-header {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center;
   padding: 1rem 1.25rem;
   background: rgba(var(--surf-card), 0.82);
   border: 1px solid rgba(var(--a), 0.40);
@@ -247,19 +244,6 @@ function formatAhTime(lastModified: string): string {
 .header-left h2 { font-size: 1.25rem; margin-bottom: 0.15rem; color: var(--text-1); }
 .last-updated { font-size: 0.75rem; color: var(--text-4); }
 .item-icon-lg { width: 48px; height: 48px; border-radius: 6px; border: 1px solid rgba(var(--a), 0.45); box-shadow: 0 0 10px rgba(var(--a), 0.25); }
-
-.btn-refresh {
-  padding: 0.5rem 1rem;
-  background: rgba(var(--a), 0.28);
-  border: 1px solid rgba(var(--a-bright), 0.55);
-  border-radius: 6px; color: var(--text-2); cursor: pointer;
-  font-size: 0.875rem; transition: background 0.15s, box-shadow 0.15s;
-}
-.btn-refresh:hover:not(:disabled) {
-  background: rgba(var(--a-mid), 0.55);
-  box-shadow: 0 0 14px rgba(var(--a-bright), 0.40);
-}
-.btn-refresh:disabled { opacity: 0.4; cursor: default; }
 
 .error-banner {
   padding: 0.75rem 1rem; background: rgba(80, 10, 10, 0.7);

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { PROFESSIONS } from '@/config/professions'
+import WowTokenWidget from '@/components/WowTokenWidget.vue'
 </script>
 
 <template>
@@ -12,6 +13,8 @@ import { PROFESSIONS } from '@/config/professions'
       <h2>Professions</h2>
       <p class="subtitle">Choose a profession to see its crafts</p>
     </div>
+
+    <WowTokenWidget />
 
     <ul class="profession-grid">
       <li

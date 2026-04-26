@@ -93,6 +93,28 @@ async function getItemMedia(itemId: number, region: string): Promise<string> {
   return icon
 }
 
+// --- WoW Token price (cached per region, 15 min) ---
+
+const tokenPriceCaches: Record<string, { price: number; lastUpdated: number; expiresAt: number }> = {}
+
+async function getTokenPrice(region: string): Promise<{ price: number; lastUpdated: number }> {
+  const cached = tokenPriceCaches[region]
+  if (cached && Date.now() < cached.expiresAt) return cached
+
+  const token = await getToken()
+  const res = await fetch(
+    `https://${region}.api.blizzard.com/data/wow/token/index?namespace=dynamic-${region}&locale=en_US`,
+    { headers: { Authorization: `Bearer ${token}` } }
+  )
+
+  if (!res.ok) throw new Error(`Token price fetch failed: ${res.status}`)
+
+  const data = (await res.json()) as { price: number; last_updated_timestamp: number }
+  const entry = { price: data.price, lastUpdated: data.last_updated_timestamp, expiresAt: Date.now() + 15 * 60 * 1000 }
+  tokenPriceCaches[region] = entry
+  return entry
+}
+
 // --- Routes ---
 
 app.get('/api/prices', async (req, res) => {
@@ -127,6 +149,18 @@ app.get('/api/media', async (req, res) => {
   } catch (e) {
     console.error(e)
     res.status(500).json({ error: 'Failed to fetch media' })
+  }
+})
+
+app.get('/api/token', async (req, res) => {
+  const region = String(req.query.region || DEFAULT_REGION).toLowerCase()
+  try {
+    const { price, lastUpdated } = await getTokenPrice(region)
+    res.setHeader('Cache-Control', 's-maxage=900, stale-while-revalidate=60')
+    res.json({ price, lastUpdated })
+  } catch (e) {
+    console.error(e)
+    res.status(500).json({ error: 'Failed to fetch token price' })
   }
 })
 
