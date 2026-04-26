@@ -63,39 +63,39 @@ h2 {
   align-items: center;
   gap: 0.6rem;
   padding: 1.4rem 1rem 1.1rem;
-  background: rgba(18, 8, 38, 0.78);
-  border: 1px solid rgba(140, 65, 225, 0.32);
+  background: rgba(var(--surf-card), 0.78);
+  border: 1px solid rgba(var(--a), 0.32);
   border-radius: 12px;
-  color: #d4c4f0;
+  color: var(--text-2);
   text-decoration: none;
   backdrop-filter: blur(8px);
   transition: background 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
 .profession-card:hover {
-  background: rgba(30, 12, 60, 0.88);
-  border-color: rgba(168, 85, 247, 0.60);
+  background: rgba(var(--surf-card), 0.92);
+  border-color: rgba(var(--a-bright), 0.60);
   transform: translateY(-3px);
-  box-shadow: 0 6px 24px rgba(120, 55, 200, 0.30);
+  box-shadow: 0 6px 24px rgba(var(--a-mid), 0.30);
 }
 
 .profession-icon {
   width: 52px;
   height: 52px;
   border-radius: 8px;
-  border: 1px solid rgba(140, 65, 225, 0.45);
-  box-shadow: 0 0 10px rgba(120, 55, 200, 0.20);
+  border: 1px solid rgba(var(--a), 0.45);
+  box-shadow: 0 0 10px rgba(var(--a-mid), 0.20);
 }
 
 .profession-name {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #ede5ff;
+  color: var(--text-1);
   text-align: center;
 }
 
 .profession-count {
   font-size: 0.72rem;
-  color: #7a6090;
+  color: var(--text-4);
 }
 </style>

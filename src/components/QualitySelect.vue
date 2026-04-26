@@ -67,8 +67,8 @@ function select(val: ItemQuality) {
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  background: rgba(18, 8, 38, 0.85);
-  border: 1px solid rgba(140, 65, 225, 0.40);
+  background: rgba(var(--surf-card), 0.85);
+  border: 1px solid rgba(var(--a), 0.40);
   border-radius: 4px;
   padding: 0.4rem 0.6rem;
   cursor: pointer;
@@ -79,12 +79,12 @@ function select(val: ItemQuality) {
 }
 
 .qs-trigger:hover {
-  border-color: rgba(168, 85, 247, 0.65);
-  box-shadow: 0 0 8px rgba(120, 55, 200, 0.25);
+  border-color: rgba(var(--a-bright), 0.65);
+  box-shadow: 0 0 8px rgba(var(--a-mid), 0.25);
 }
 
 .qs-arrow {
-  color: #7a5fa0;
+  color: var(--text-4);
   font-size: 0.65rem;
   line-height: 1;
 }
@@ -99,8 +99,8 @@ function select(val: ItemQuality) {
 
 .qs-dropdown {
   position: fixed;
-  background: rgba(14, 5, 30, 0.97);
-  border: 1px solid rgba(140, 65, 225, 0.45);
+  background: rgba(var(--surf-overlay), 0.97);
+  border: 1px solid rgba(var(--a), 0.45);
   border-radius: 6px;
   padding: 0.2rem;
   display: flex;
@@ -108,7 +108,7 @@ function select(val: ItemQuality) {
   gap: 0.1rem;
   z-index: 9999;
   min-width: 56px;
-  box-shadow: 0 4px 20px rgba(80, 20, 160, 0.45);
+  box-shadow: 0 4px 20px rgba(var(--a-dim), 0.45);
   backdrop-filter: blur(12px);
 }
 
@@ -125,6 +125,6 @@ function select(val: ItemQuality) {
   transition: background 0.1s;
 }
 
-.qs-option:hover { background: rgba(140, 65, 225, 0.20); }
-.qs-option.active { background: rgba(120, 50, 200, 0.30); }
+.qs-option:hover { background: rgba(var(--a), 0.20); }
+.qs-option.active { background: rgba(var(--a-mid), 0.30); }
 </style>

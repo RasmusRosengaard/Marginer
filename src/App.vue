@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useSettingsStore, REGIONS } from '@/stores/settings'
+import { useSettingsStore, REGIONS, THEMES } from '@/stores/settings'
 import { PROFESSIONS } from '@/config/professions'
 
 const settings = useSettingsStore()
@@ -29,6 +29,21 @@ const settings = useSettingsStore()
     </nav>
 
     <div class="navbar-right">
+      <div class="theme-switcher">
+        <button
+          v-for="t in THEMES"
+          :key="t.value"
+          class="theme-btn"
+          :class="{ active: settings.theme === t.value }"
+          :title="t.label"
+          @click="settings.theme = t.value"
+        >
+          <span class="theme-dot" :style="{ background: t.color }" />
+        </button>
+      </div>
+
+      <div class="divider-v" />
+
       <label class="region-label" for="region-select">Region</label>
       <select id="region-select" v-model="settings.region" class="region-select">
         <option v-for="r in REGIONS" :key="r.value" :value="r.value">{{ r.label }}</option>
@@ -61,10 +76,10 @@ const settings = useSettingsStore()
   gap: 0;
   padding: 0 2rem;
   height: 58px;
-  background: rgba(10, 4, 22, 0.90);
+  background: rgba(var(--surf-deep), 0.90);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(140, 65, 225, 0.35);
-  box-shadow: 0 2px 24px rgba(80, 20, 160, 0.35);
+  border-bottom: 1px solid rgba(var(--a), 0.35);
+  box-shadow: 0 2px 24px rgba(var(--a-dim), 0.35);
 }
 
 .brand {
@@ -83,7 +98,7 @@ const settings = useSettingsStore()
 }
 
 .brand:hover .brand-logo {
-  filter: brightness(1.15) drop-shadow(0 0 6px rgba(168, 85, 247, 0.55));
+  filter: brightness(1.15) drop-shadow(0 0 6px rgba(var(--a-bright), 0.55));
 }
 
 nav {
@@ -99,7 +114,7 @@ nav {
   gap: 0.45rem;
   padding: 0 0.9rem;
   height: 100%;
-  color: #8878aa;
+  color: var(--nav-text);
   text-decoration: none;
   font-size: 0.85rem;
   border-bottom: 2px solid transparent;
@@ -108,14 +123,14 @@ nav {
 }
 
 .nav-profession:hover {
-  color: #d4c4f0;
-  border-bottom-color: rgba(160, 90, 255, 0.4);
+  color: var(--text-2);
+  border-bottom-color: rgba(var(--a-bright), 0.4);
 }
 
 .nav-profession.router-link-active {
-  color: #ede5ff;
-  border-bottom-color: #a855f7;
-  text-shadow: 0 0 12px rgba(168, 85, 247, 0.55);
+  color: var(--text-1);
+  border-bottom-color: var(--nav-active);
+  text-shadow: 0 0 12px rgba(var(--a-bright), 0.55);
 }
 
 .nav-prof-icon {
@@ -131,23 +146,60 @@ nav {
   margin-left: auto;
 }
 
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.theme-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: none;
+  padding: 3px;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-btn:hover { border-color: rgba(255, 255, 255, 0.25); transform: scale(1.1); }
+.theme-btn.active { border-color: rgba(255, 255, 255, 0.55); }
+
+.theme-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+}
+
+.divider-v {
+  width: 1px;
+  height: 20px;
+  background: rgba(var(--a), 0.30);
+  margin: 0 0.25rem;
+}
+
 .region-label {
   font-size: 0.8rem;
-  color: #7a6090;
+  color: var(--text-4);
 }
 
 .region-select {
-  background: rgba(8, 3, 18, 0.8);
-  border: 1px solid rgba(140, 65, 225, 0.4);
+  background: rgba(var(--surf-deep), 0.8);
+  border: 1px solid rgba(var(--a), 0.4);
   border-radius: 6px;
-  color: #d4c4f0;
+  color: var(--text-2);
   padding: 0.3rem 0.5rem;
   font-size: 0.875rem;
   cursor: pointer;
   transition: border-color 0.15s;
 }
 
-.region-select:hover { border-color: rgba(180, 100, 255, 0.65); }
+.region-select:hover { border-color: rgba(var(--a-focus), 0.65); }
 
 .container {
   flex: 1;
@@ -160,12 +212,12 @@ nav {
 .footer {
   text-align: center;
   padding: 1.5rem 2rem;
-  border-top: 1px solid rgba(140, 65, 225, 0.2);
+  border-top: 1px solid rgba(var(--a), 0.2);
   font-size: 0.825rem;
-  color: #7a6090;
+  color: var(--text-4);
 }
 
-.footer strong { color: #b8a0d0; }
+.footer strong { color: var(--text-3); }
 
 .page-enter-active,
 .page-leave-active {

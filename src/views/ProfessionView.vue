@@ -60,19 +60,19 @@ const profession = computed(() => PROFESSIONS.find(p => p.slug === slug.value))
   width: 52px;
   height: 52px;
   border-radius: 8px;
-  border: 1px solid rgba(140, 65, 225, 0.50);
-  box-shadow: 0 0 14px rgba(120, 55, 200, 0.30);
+  border: 1px solid rgba(var(--a), 0.50);
+  box-shadow: 0 0 14px rgba(var(--a-mid), 0.30);
 }
 
 h2 {
   font-size: 1.4rem;
   margin-bottom: 0.2rem;
-  color: #ede5ff;
+  color: var(--text-1);
 }
 
 .subtitle {
   font-size: 0.85rem;
-  color: #7a6090;
+  color: var(--text-4);
 }
 
 .craft-list {
@@ -88,33 +88,33 @@ h2 {
   align-items: center;
   gap: 0.875rem;
   padding: 0.75rem 1rem;
-  background: rgba(18, 8, 38, 0.78);
-  border: 1px solid rgba(140, 65, 225, 0.32);
+  background: rgba(var(--surf-card), 0.78);
+  border: 1px solid rgba(var(--a), 0.32);
   border-radius: 10px;
-  color: #d4c4f0;
+  color: var(--text-2);
   text-decoration: none;
   backdrop-filter: blur(8px);
   transition: background 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
 .craft-link:hover {
-  background: rgba(30, 12, 60, 0.88);
-  border-color: rgba(168, 85, 247, 0.60);
+  background: rgba(var(--surf-card), 0.92);
+  border-color: rgba(var(--a-bright), 0.60);
   transform: translateX(4px);
-  box-shadow: 0 0 18px rgba(120, 55, 200, 0.28);
+  box-shadow: 0 0 18px rgba(var(--a-mid), 0.28);
 }
 
 .craft-icon {
   width: 38px;
   height: 38px;
   border-radius: 5px;
-  border: 1px solid rgba(140, 65, 225, 0.45);
+  border: 1px solid rgba(var(--a), 0.45);
   flex-shrink: 0;
 }
 
 .craft-name {
   font-size: 0.95rem;
   font-weight: 500;
-  color: #ede5ff;
+  color: var(--text-1);
 }
 </style>
