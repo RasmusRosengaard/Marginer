@@ -19,7 +19,8 @@
       "Bash(curl -s \"https://www.wowhead.com/item=239202/sunfire-silk-bolt\")",
       "Bash(curl -s \"https://nether.wowhead.com/item=241309\")",
       "Bash(curl -s \"https://nether.wowhead.com/item=239202\")",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(node *)"
     ]
   }
 }

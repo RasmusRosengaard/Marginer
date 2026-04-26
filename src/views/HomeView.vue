@@ -44,11 +44,12 @@ import { PROFESSIONS } from '@/config/professions'
 h2 {
   font-size: 1.4rem;
   margin-bottom: 0.25rem;
+  color: #ede5ff;
 }
 
 .subtitle {
   font-size: 0.85rem;
-  color: #6a7f99;
+  color: #7a6090;
 }
 
 .profession-list {
@@ -56,7 +57,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  max-width: 420px;
+  max-width: 440px;
 }
 
 .profession-link {
@@ -64,25 +65,27 @@ h2 {
   align-items: center;
   gap: 0.875rem;
   padding: 0.875rem 1rem;
-  background: #16213e;
-  border: 1px solid #0f3460;
-  border-radius: 8px;
-  color: #e0e0e0;
+  background: rgba(18, 8, 38, 0.78);
+  border: 1px solid rgba(140, 65, 225, 0.32);
+  border-radius: 10px;
+  color: #d4c4f0;
   text-decoration: none;
-  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+  backdrop-filter: blur(8px);
+  transition: background 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
 .profession-link:hover {
-  background: #0f3460;
-  border-color: #1a5ba0;
+  background: rgba(30, 12, 60, 0.88);
+  border-color: rgba(168, 85, 247, 0.60);
   transform: translateX(4px);
+  box-shadow: 0 0 18px rgba(120, 55, 200, 0.28);
 }
 
 .profession-icon {
   width: 42px;
   height: 42px;
-  border-radius: 5px;
-  border: 1px solid #1e3a5f;
+  border-radius: 6px;
+  border: 1px solid rgba(140, 65, 225, 0.45);
   flex-shrink: 0;
 }
 
@@ -94,11 +97,12 @@ h2 {
 
 .profession-name {
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
+  color: #ede5ff;
 }
 
 .profession-count {
   font-size: 0.75rem;
-  color: #6a7f99;
+  color: #7a6090;
 }
 </style>

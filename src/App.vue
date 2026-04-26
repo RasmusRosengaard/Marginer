@@ -12,7 +12,9 @@ const settings = useSettingsStore()
     :enter="{ opacity: 1, y: 0, transition: { duration: 400 } }"
     class="navbar"
   >
-    <RouterLink to="/" class="brand">Marginer</RouterLink>
+    <RouterLink to="/" class="brand">
+      <img src="@/assets/logo.svg" alt="Marginer" class="brand-logo" />
+    </RouterLink>
 
     <nav>
       <RouterLink
@@ -58,22 +60,31 @@ const settings = useSettingsStore()
   align-items: center;
   gap: 0;
   padding: 0 2rem;
-  height: 56px;
-  background: #16213e;
-  border-bottom: 1px solid #0f3460;
+  height: 58px;
+  background: rgba(10, 4, 22, 0.90);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(140, 65, 225, 0.35);
+  box-shadow: 0 2px 24px rgba(80, 20, 160, 0.35);
 }
 
 .brand {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #e0e0e0;
+  display: flex;
+  align-items: center;
   text-decoration: none;
   margin-right: 1.5rem;
-  transition: color 0.15s;
-  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.brand:hover { color: #c8a94c; }
+.brand-logo {
+  height: 34px;
+  width: auto;
+  display: block;
+  transition: filter 0.15s;
+}
+
+.brand:hover .brand-logo {
+  filter: brightness(1.15) drop-shadow(0 0 6px rgba(168, 85, 247, 0.55));
+}
 
 nav {
   display: flex;
@@ -86,24 +97,25 @@ nav {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0 1rem;
+  padding: 0 0.9rem;
   height: 100%;
-  color: #8899aa;
+  color: #8878aa;
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   border-bottom: 2px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
+  transition: color 0.15s, border-color 0.15s, text-shadow 0.15s;
   white-space: nowrap;
 }
 
 .nav-profession:hover {
-  color: #cde;
-  border-bottom-color: #1e3a5f;
+  color: #d4c4f0;
+  border-bottom-color: rgba(160, 90, 255, 0.4);
 }
 
 .nav-profession.router-link-active {
-  color: #e0e0e0;
-  border-bottom-color: #c8a94c;
+  color: #ede5ff;
+  border-bottom-color: #a855f7;
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.55);
 }
 
 .nav-prof-icon {
@@ -121,21 +133,21 @@ nav {
 
 .region-label {
   font-size: 0.8rem;
-  color: #6a7f99;
+  color: #7a6090;
 }
 
 .region-select {
-  background: #0d1b35;
-  border: 1px solid #1e3a5f;
-  border-radius: 4px;
-  color: #e0e0e0;
+  background: rgba(8, 3, 18, 0.8);
+  border: 1px solid rgba(140, 65, 225, 0.4);
+  border-radius: 6px;
+  color: #d4c4f0;
   padding: 0.3rem 0.5rem;
   font-size: 0.875rem;
   cursor: pointer;
   transition: border-color 0.15s;
 }
 
-.region-select:hover { border-color: #1a5ba0; }
+.region-select:hover { border-color: rgba(180, 100, 255, 0.65); }
 
 .container {
   max-width: 960px;
@@ -146,12 +158,12 @@ nav {
 .footer {
   text-align: center;
   padding: 1.5rem 2rem;
-  border-top: 1px solid #0f3460;
+  border-top: 1px solid rgba(140, 65, 225, 0.2);
   font-size: 0.825rem;
-  color: #6a7f99;
+  color: #7a6090;
 }
 
-.footer strong { color: #9fb4c7; }
+.footer strong { color: #b8a0d0; }
 
 .page-enter-active,
 .page-leave-active {
