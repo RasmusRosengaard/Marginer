@@ -15,6 +15,8 @@ export const useLightsPotentialStore = defineStore('lightspotential', () => {
     0: 'silver', 1: 'silver', 2: 'silver', 3: 'silver'
   })
 
+  const prolificPotioneer = ref(false)
+
   const prices = ref<Record<number, number>>({})
   const icons = ref<Record<number, string>>({})
   const isLoading = ref(false)
@@ -41,7 +43,7 @@ export const useLightsPotentialStore = defineStore('lightspotential', () => {
     }
   }
 
-  const multicraftMultiplier = computed(() => 2.5)
+  const multicraftMultiplier = computed(() => prolificPotioneer.value ? 2.8 : 2.5)
 
   const multicraftAvgExtra = computed(() => {
     const maxExtra = Math.floor(recipe.baseOutput * multicraftMultiplier.value)
@@ -88,6 +90,7 @@ export const useLightsPotentialStore = defineStore('lightspotential', () => {
 
   return {
     outputQuality, multicraftChance, resourcefulnessChance, reagentQualities,
+    prolificPotioneer,
     prices, icons, isLoading, error, ahLastModified,
     loadMarketData, recipe,
     multicraftMultiplier, multicraftAvgExtra, expectedOutput,

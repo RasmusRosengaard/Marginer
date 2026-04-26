@@ -88,6 +88,31 @@ function formatAhTime(lastModified: string): string {
         :enter="{ opacity: 1, y: 0, transition: { delay: 200, duration: 400 } }"
         class="card"
       >
+        <h3 class="card-title">Potion Prowess Specialization</h3>
+        <div class="spec-grid">
+          <div class="spec-group">
+            <span class="spec-group-label">Prolific Potioneer — Light</span>
+            <label class="checkbox-label">
+              <input type="checkbox" v-model="store.prolificPotioneer" />
+              20 KP — Yield more Light potions when multicrafting
+            </label>
+            <span class="spec-stat">
+              Effective multiplier:
+              <strong>{{ store.multicraftMultiplier.toFixed(2) }}×</strong>
+              — max output per proc:
+              <strong>{{ Math.floor(store.recipe.baseOutput * store.multicraftMultiplier) + store.recipe.baseOutput }}</strong>
+              potions
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section
+        v-motion
+        :initial="{ opacity: 0, y: 20 }"
+        :enter="{ opacity: 1, y: 0, transition: { delay: 400, duration: 400 } }"
+        class="card"
+      >
         <h3 class="card-title">Reagents</h3>
         <div class="reagent-list">
           <div
@@ -247,6 +272,17 @@ function formatAhTime(lastModified: string): string {
 }
 .input-suffix input { border: none; background: transparent; min-width: 80px; }
 .input-suffix span { padding: 0 0.5rem; color: #6a7f99; font-size: 0.85rem; border-left: 1px solid #1e3a5f; }
+
+.spec-grid { display: flex; gap: 2rem; flex-wrap: wrap; }
+.spec-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.spec-group-label { font-size: 0.8rem; font-weight: 600; color: #9fb4c7; }
+.checkbox-label {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.825rem; color: #8899aa; cursor: pointer;
+}
+.checkbox-label input[type='checkbox'] { accent-color: #1a5ba0; width: 14px; height: 14px; }
+.spec-stat { font-size: 0.775rem; color: #6a7f99; margin-top: 0.25rem; }
+.spec-stat strong { color: #c8a94c; }
 
 .reagent-list { display: flex; flex-direction: column; gap: 0.75rem; }
 .reagent-row {
