@@ -51,7 +51,7 @@ watch(() => settings.region, load)
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.75rem 0.35rem 0.4rem;
+  padding: 0.6rem 1.1rem 0.6rem 0.7rem;
   background: rgba(var(--surf-card), 0.72);
   border: 1px solid rgba(var(--a), 0.28);
   border-radius: 999px;
@@ -60,8 +60,8 @@ watch(() => settings.region, load)
 }
 
 .token-icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 4px;
   border: 1px solid rgba(var(--a), 0.40);
   display: block;

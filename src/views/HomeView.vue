@@ -45,12 +45,12 @@ import WowTokenWidget from '@/components/WowTokenWidget.vue'
 h2 {
   font-size: 1.4rem;
   margin-bottom: 0.25rem;
-  color: #ede5ff;
+  color: var(--text-1);
 }
 
 .subtitle {
   font-size: 0.85rem;
-  color: #7a6090;
+  color: var(--text-4);
 }
 
 .profession-grid {
