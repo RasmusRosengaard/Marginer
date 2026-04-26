@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="gp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8a94c"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <linearGradient id="gf" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.40"/>
+      <stop offset="100%" stop-color="#3b0764" stop-opacity="0.22"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="40" height="40" rx="7" fill="#0a0514"/>
+
+  <!-- Hexagonal gem, center (20,20), radius 17 (pointy-top) -->
+  <polygon
+    points="20,3 34.7,11.5 34.7,28.5 20,37 5.3,28.5 5.3,11.5"
+    fill="url(#gf)"
+    stroke="url(#gp)"
+    stroke-width="1.4"
+  />
+
+  <!-- Facet lines -->
+  <line x1="20" y1="3"    x2="20"   y2="20" stroke="url(#gp)" stroke-width="0.5" opacity="0.38"/>
+  <line x1="34.7" y1="11.5" x2="20" y2="20" stroke="url(#gp)" stroke-width="0.5" opacity="0.38"/>
+  <line x1="5.3"  y1="11.5" x2="20" y2="20" stroke="url(#gp)" stroke-width="0.5" opacity="0.38"/>
+
+  <!-- M lettermark -->
+  <text
+    x="20" y="26"
+    text-anchor="middle"
+    font-family="system-ui,-apple-system,sans-serif"
+    font-size="16"
+    font-weight="900"
+    fill="url(#gp)"
+    filter="url(#glow)"
+  >M</text>
+</svg>
