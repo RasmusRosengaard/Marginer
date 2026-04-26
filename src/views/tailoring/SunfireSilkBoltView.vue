@@ -50,6 +50,7 @@ function formatAhTime(lastModified: string): string {
     <div v-if="store.error" class="error-banner">{{ store.error }}</div>
 
     <div class="calc-body" :class="{ dimmed: store.isLoading }">
+      <div class="col-left">
 
       <section
         v-motion
@@ -166,6 +167,9 @@ function formatAhTime(lastModified: string): string {
         </div>
       </section>
 
+      </div><!-- /col-left -->
+      <div class="col-right">
+
       <section
         v-motion
         :initial="{ opacity: 0, y: 20 }"
@@ -217,6 +221,7 @@ function formatAhTime(lastModified: string): string {
           </div>
         </div>
       </section>
+      </div><!-- /col-right -->
 
     </div>
   </div>
@@ -270,8 +275,10 @@ function formatAhTime(lastModified: string): string {
   font-size: 0.875rem;
 }
 
-.calc-body { display: flex; flex-direction: column; gap: 1.25rem; transition: opacity 0.2s; }
+.calc-body { display: grid; grid-template-columns: 1fr 320px; gap: 1.25rem; align-items: start; transition: opacity 0.2s; }
 .calc-body.dimmed { opacity: 0.4; pointer-events: none; }
+.col-left { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+.col-right { position: sticky; top: 1.5rem; }
 
 .card {
   background: rgba(18, 8, 38, 0.82);
@@ -360,7 +367,7 @@ function formatAhTime(lastModified: string): string {
 /* Spec */
 .spec-grid { display: flex; gap: 2rem; flex-wrap: wrap; }
 .spec-group { display: flex; flex-direction: column; gap: 0.5rem; }
-.spec-group-label { font-size: 0.8rem; font-weight: 600; color: #c084fc; }
+.spec-group-label { font-size: 0.8rem; font-weight: 600; color: #d4c4f0; }
 .checkbox-label {
   display: flex; align-items: center; gap: 0.5rem;
   font-size: 0.825rem; color: #b8a0d0; cursor: pointer;

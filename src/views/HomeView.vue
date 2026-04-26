@@ -13,20 +13,18 @@ import { PROFESSIONS } from '@/config/professions'
       <p class="subtitle">Choose a profession to see its crafts</p>
     </div>
 
-    <ul class="profession-list">
+    <ul class="profession-grid">
       <li
         v-for="(profession, i) in PROFESSIONS"
         :key="profession.slug"
         v-motion
-        :initial="{ opacity: 0, x: -20 }"
-        :enter="{ opacity: 1, x: 0, transition: { delay: 150 + i * 80, duration: 350 } }"
+        :initial="{ opacity: 0, y: 16 }"
+        :enter="{ opacity: 1, y: 0, transition: { delay: 120 + i * 60, duration: 320 } }"
       >
-        <RouterLink :to="`/${profession.slug}`" class="profession-link">
+        <RouterLink :to="`/${profession.slug}`" class="profession-card">
           <img :src="profession.icon" :alt="profession.name" class="profession-icon" />
-          <div class="profession-info">
-            <span class="profession-name">{{ profession.name }}</span>
-            <span class="profession-count">{{ profession.crafts.length }} recipe{{ profession.crafts.length !== 1 ? 's' : '' }}</span>
-          </div>
+          <span class="profession-name">{{ profession.name }}</span>
+          <span class="profession-count">{{ profession.crafts.length }} recipe{{ profession.crafts.length !== 1 ? 's' : '' }}</span>
         </RouterLink>
       </li>
     </ul>
@@ -52,57 +50,52 @@ h2 {
   color: #7a6090;
 }
 
-.profession-list {
+.profession-grid {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  max-width: 440px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
 }
 
-.profession-link {
+.profession-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.875rem;
-  padding: 0.875rem 1rem;
+  gap: 0.6rem;
+  padding: 1.4rem 1rem 1.1rem;
   background: rgba(18, 8, 38, 0.78);
   border: 1px solid rgba(140, 65, 225, 0.32);
-  border-radius: 10px;
+  border-radius: 12px;
   color: #d4c4f0;
   text-decoration: none;
   backdrop-filter: blur(8px);
   transition: background 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
-.profession-link:hover {
+.profession-card:hover {
   background: rgba(30, 12, 60, 0.88);
   border-color: rgba(168, 85, 247, 0.60);
-  transform: translateX(4px);
-  box-shadow: 0 0 18px rgba(120, 55, 200, 0.28);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(120, 55, 200, 0.30);
 }
 
 .profession-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 6px;
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
   border: 1px solid rgba(140, 65, 225, 0.45);
-  flex-shrink: 0;
-}
-
-.profession-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+  box-shadow: 0 0 10px rgba(120, 55, 200, 0.20);
 }
 
 .profession-name {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #ede5ff;
+  text-align: center;
 }
 
 .profession-count {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: #7a6090;
 }
 </style>

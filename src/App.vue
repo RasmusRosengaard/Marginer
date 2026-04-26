@@ -150,7 +150,9 @@ nav {
 .region-select:hover { border-color: rgba(180, 100, 255, 0.65); }
 
 .container {
+  flex: 1;
   max-width: 960px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
 }
