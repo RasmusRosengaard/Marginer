@@ -13,7 +13,7 @@ const settings = useSettingsStore()
     class="navbar"
   >
     <RouterLink to="/" class="brand">
-      <img src="@/assets/logo.svg" alt="Marginer" class="brand-logo" />
+      <img src="@/assets/logo.svg" alt="Margineer" class="brand-logo" />
     </RouterLink>
 
     <nav>
